@@ -4,7 +4,7 @@ from .models import Task # Припустимо, у вас є модель Task
 class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
-        fields = ['title', 'description', 'completed'] # Поля для форми
+        fields = ['title', 'description', 'deadline', 'priority', 'status', 'file', 'image'] # Поля для форми
 
 
     def __init__(self, *args, **kwargs):
