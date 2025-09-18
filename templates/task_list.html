@@ -4,6 +4,19 @@
     <div class="container">
         
         <h1>Список задач</h1>
+        <form action="" method="get">
+            {{filterForm.as_p}}
+            <button type="submit"><i class="bi bi-funnel"></i></button>
+        </form>
+        {% if user.is_authenticated %}
+            <form action="{% url 'Logout' %}" method="post">
+                {% csrf_token %}
+                <button class="btn btn-outline-danger position-absolute top-0 end-0 mt-2 me-2" type="submit">Logout</button>
+            </form>
+
+        {% else %}
+            <a href="{% url 'Login' %}" class="btn btn-primary position-absolute top-0 end-0 mt-2 me-2">Login</a>
+        {% endif %}
         <div class="list-group">
             {% for task in tasks %}
             

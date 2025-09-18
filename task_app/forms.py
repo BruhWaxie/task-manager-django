@@ -15,3 +15,22 @@ class TaskForm(forms.ModelForm):
             self.fields[field].widget.attrs.update({'class': 'form-control mb-2', })
 
         self.fields['deadline'].widget = forms.DateInput(attrs={'type': 'datetime-local', 'class': 'form-control mb-2'})
+
+
+class FilterForm(forms.Form):
+    STATUSES = {
+        '': 'All',
+        'on_progress': 'On Progress',
+        'completed': 'Completed',
+        'not_started': 'Not started'
+    }
+
+    PRIORITIES = {
+        '': 'All',
+        'low': 'Low priority',
+        'high': 'High priority',
+        'medium': 'Medium priority'
+    }
+
+    priority = forms.ChoiceField(choices=PRIORITIES, label='Priorities', required=False)
+    status = forms.ChoiceField(choices=STATUSES, label='Statuses', required=False)
