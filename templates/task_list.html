@@ -2,13 +2,22 @@
 
 {% block content %}
     <div class="container">
+        
         <h1>Список задач</h1>
-        {% for task in tasks %}
-            <p>
-                {{task}}
-            </p>
-        {% endfor %}
+        <div class="list-group">
+            {% for task in tasks %}
+            
+                <a href="{% url 'Update' task.id %}" class="gap-2 align-items-center d-flex list-group-item list-group-item-action">
+                    <b>{{task.title}}</b>
+                    <span class="badge rounded-pill text-bg-info">{{task.get_status_display}}</span>
+                    <span class="badge rounded-pill text-bg-success">{{task.get_priority_display}}</span>
 
-        <a href='{% url "Create" %}' class="btn btn-primary">Добавити задачу</a>
+                    <span class="ms-auto">{{task.deadline}}</span>
+                </a>
+            {% endfor %}
+        </div>
+
+
+        <a href='{% url "Create" %}' class="btn btn-primary mt-3">Добавити задачу</a>
     </div>
 {% endblock content %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1>Редагувати задачу</h1>
+        <form class="mb-5" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-bookmark-fill"></i> Зберегти</button>
+            <a class="btn btn-danger" href="{% url 'Delete' task.id %}">
+                <i class="bi bi-trash-fill"></i> Видалити</a>
+        </form>
+    </div>
+{% endblock content %}
